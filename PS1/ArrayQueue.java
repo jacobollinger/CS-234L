@@ -47,16 +47,17 @@ class ArrayQueue<T> {
         return q;
     }
 
-    @SuppressWarnings("unchecked")
+    // @SuppressWarnings("unchecked")
     public void enhancedEnqueue(T value) {
-        if(this.full()) {
-            // ArrayQueue<T> q = new ArrayQueue<T>(this.arr.length * 2);
-            // q = this.copy();
-            ArrayQueue<T> q = this.copy();
-            arr = (T[]) new Object[this.arr.length];
+        if (full()) {
+            ArrayQueue<T> q = new ArrayQueue<T>(arr.length * 2 - 1);
+            while (!empty()) {
+                q.enqueue(dequeue());
+            }
+            arr = q.arr;
+            head = q.head;
+            tail = q.tail;
         }
         enqueue(value);
-
-        
     }
 }
