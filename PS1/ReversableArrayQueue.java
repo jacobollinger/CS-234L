@@ -12,10 +12,15 @@ class ReversibleArrayQueue<T> {
 
     public void reverse() {
         //TODO
+        // int temp = head;
+        // head = tail;
+        // tail = temp;
     }
 
     public void enqueue(T value) {
         //TODO
+        // arr[tail] = value;
+        // tail = (tail + 1) % arr.length;
     }
 
     public T dequeue() {
