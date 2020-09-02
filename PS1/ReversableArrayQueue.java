@@ -24,7 +24,7 @@ class ReversibleArrayQueue<T> {
         //TODO
         arr[tail] = value;
         if (reversed) {
-            // tail = tail - 1;
+            // tail = (tail - 1);
         } else {
             tail = (tail + 1) % arr.length;
         }
