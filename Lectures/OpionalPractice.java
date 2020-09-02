@@ -1,5 +1,3 @@
-import jdk.jfr.Frequency;
-
 class OpionalPractice {
     static int frequency(int[] a, int x) {
         int count = 0;
