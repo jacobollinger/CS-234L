@@ -47,17 +47,30 @@ class ArrayQueue<T> {
         return q;
     }
 
-    // @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public void enhancedEnqueue(T value) {
-        if (full()) {
-            ArrayQueue<T> q = new ArrayQueue<T>(arr.length * 2 - 1);
-            while (!empty()) {
-                q.enqueue(dequeue());
+        if(full()) {
+            T[] tempArr = (T[]) new Object[arr.length * 2 - 1];
+            tail = 0;
+            for(int i = 0; i < arr.length - 1; i++) {
+                tempArr[i] = dequeue();
+                tail++;
             }
-            arr = q.arr;
-            head = q.head;
-            tail = q.tail;
+            arr = tempArr;
+            // tail = tail - head;
+            head = 0;
         }
+        
+        // if (full()) {
+        //     ArrayQueue<T> q = new ArrayQueue<T>(arr.length * 2 - 1);
+        //     while (!empty()) {
+        //         q.enqueue(dequeue());
+        //     }
+        //     arr = q.arr;
+        //     head = q.head;
+        //     tail = q.tail;
+        // }
+
         enqueue(value);
     }
 }
