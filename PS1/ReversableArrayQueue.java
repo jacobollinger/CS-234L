@@ -13,28 +13,27 @@ class ReversibleArrayQueue<T> {
     }
 
     public void reverse() {
-        //TODO
-        reversed = reversed ? false : true;
-        int temp = head;
-        head = tail;
-        tail = temp;
+        // 5 8 2 7       7 2 8 5
+        // h       t     h       t
+        reversed = !reversed;
+        int temp = reversed ? head - 1 : head + 1;
+        head = reversed ? tail - 1 : tail + 1;
+        tail = temp < 0 ? arr.length - 1 : temp;
     }
 
     public void enqueue(T value) {
-        //TODO
         arr[tail] = value;
         if (reversed) {
-            // tail = (tail - 1);
+            tail = tail != 0 ? tail - 1 : arr.length - 1;
         } else {
             tail = (tail + 1) % arr.length;
         }
     }
 
     public T dequeue() {
-        //TODO
         T value = arr[head];
         if (reversed) {
-            // head = (head - 1);
+            head = head != 0 ? head - 1 : arr.length - 1;
         } else {
             head = (head + 1) % arr.length;
         }
