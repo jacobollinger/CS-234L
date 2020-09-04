@@ -1,4 +1,4 @@
-class Lect08312020$09022020 {
+class Lect08312020$09042020 {
     public static void main(String[] args) {
         int[] a = {};
         for (int i = 0; i < a.length; i++) {
@@ -69,4 +69,13 @@ class Lect08312020$09022020 {
      * 
      * Know for exams: 1+2+...+n = n(n+1) / 2
      */
+
+
+    // regular expression
+    // if(elem.matches("-?\\d+(\\.\\d+)?")) {}
+    // -? means the negative sign is optional
+    // \d means digit
+    // + means one or more
+    // . means any character
+    // \. means period
 }
