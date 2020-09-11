@@ -41,11 +41,29 @@ class ArrayList<T> {
     public void add(ArrayList<T> list0) {
         // Question 1 in the problem set.
         // Append list0 at the end of this list.
+        if (this.arr.length < this.top + list0.top) {
+            this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
+            // this.changeCapacity((this.top + list.top) * 2);
+        }
+        for (int i = this.top; i < this.top + list0.top; i++) {
+            this.arr[i] = list0.arr[i - top];
+        }
+        this.top += list0.top;
     }
 
     public void add(ArrayList<T> list0, int index) {
         // Question 2 in the problem set.
         // Insert list0 in this list at a given index.
         // We assume 0 <= index < top.
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("[ ");
+        for (int i = 0; i < top - 1; i++) {
+            s.append(arr[i] + ", ");
+        }
+        s.append(arr[top - 1] + " ]");
+        return s.toString();
     }
 }
