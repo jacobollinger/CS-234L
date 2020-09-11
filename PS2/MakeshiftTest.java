@@ -9,9 +9,11 @@ class MakeshiftTest {
             arrList2.add(i);
         }
 
-        System.out.print(arrList1 + " + " + arrList2 + " = ");
+        // System.out.print(arrList1 + " + " + arrList2 + " = ");
+        // arrList1.add(arrList2);
+        // System.out.println(arrList1);
 
-        arrList1.add(arrList2);
+        // arrList1.add(arrList2, 3);
 
         System.out.println(arrList1);
     }

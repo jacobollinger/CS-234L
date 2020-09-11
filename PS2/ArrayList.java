@@ -41,6 +41,7 @@ class ArrayList<T> {
     public void add(ArrayList<T> list0) {
         // Question 1 in the problem set.
         // Append list0 at the end of this list.
+        
         if (this.arr.length < this.top + list0.top) {
             this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
             // this.changeCapacity((this.top + list.top) * 2);
@@ -55,8 +56,25 @@ class ArrayList<T> {
         // Question 2 in the problem set.
         // Insert list0 in this list at a given index.
         // We assume 0 <= index < top.
+
+        if (this.arr.length < this.top + list0.top) {
+            this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
+            // this.changeCapacity((this.top + list.top) * 2);
+        }
+
+        for(int i = this.top - 1; i >= index; i--) {
+            this.arr[i + list0.top] = this.arr[i];
+        }
+
+        for (int i = index; i < list0.top + index; i++) {
+            this.arr[i] = list0.arr[i - index];
+        }
+        this.top += list0.top;
     }
 
+
+
+    // Extra
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("[ ");
