@@ -41,7 +41,7 @@ class ArrayList<T> {
     public void add(ArrayList<T> list0) {
         // Question 1 in the problem set.
         // Append list0 at the end of this list.
-        
+
         if (this.arr.length < this.top + list0.top) {
             this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
             // this.changeCapacity((this.top + list.top) * 2);
@@ -62,17 +62,37 @@ class ArrayList<T> {
             // this.changeCapacity((this.top + list.top) * 2);
         }
 
-        for(int i = this.top - 1; i >= index; i--) {
+        for (int i = this.top - 1; i >= index; i--) {
             this.arr[i + list0.top] = this.arr[i];
         }
-
         for (int i = index; i < list0.top + index; i++) {
             this.arr[i] = list0.arr[i - index];
         }
+
+
+        // for (int i = this.top - 1; i >= 0; i--) { // index / 2 - (this.top - index)
+        //     if (i >= index) {
+        //         this.arr[i + list0.top] = this.arr[i];
+        //     }
+        //     this.arr[i + list0.top - (this.top - index)] = list0.arr[list0.top + i - 5];
+        // }
+
+        // for (int i = this.top - 1; i >= 0; i--) { // index / 2 - (this.top - index)
+        //     if (i >= index) {
+        //         this.arr[i + list0.top] = this.arr[i];
+        //     }
+        //     this.arr[i + list0.top - (this.top + index - list0.top - 1)] = list0.arr[i + (list0.top - 1 - (this.top - 1))];
+        // }
+
+        // for (int i = 1; i >= 0; i--) { // index / 2 - (this.top - index)
+        //     if (i >= index) {
+        //         this.arr[i + list0.top + this.top] = this.arr[i + this.top];
+        //     }
+        //     this.arr[i + list0.top * 2 - index + 1] = list0.arr[i + list0.top];
+        // }
+
         this.top += list0.top;
     }
-
-
 
     // Extra
     public String toString() {
