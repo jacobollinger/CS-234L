@@ -19,12 +19,26 @@ class ArrayList<T> {
         arr = newArr;
     }
 
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[ ");
+        int i;
+        for (i = 0; i < top; i++) {
+            builder.append(arr[i] + " ");
+        }
+        for (i = top; i < arr.length; i++) {
+            builder.append("_ ");
+        }
+        builder.append("]");
+        return builder.toString();
+    }
+
     public void add(T value) {
         if (top == arr.length) {
             changeCapacity(arr.length * 2);
         }
         arr[top] = value;
-        top = top + 1;
+        top++;
     }
 
     public void add(T value, int index) {
@@ -35,13 +49,12 @@ class ArrayList<T> {
             arr[i] = arr[i - 1];
         }
         arr[index] = value;
-        top = top + 1;
+        top++;
     }
 
+    // question 1
+    // Append list0 to this list.
     public void add(ArrayList<T> list0) {
-        // Question 1 in the problem set.
-        // Append list0 at the end of this list.
-
         if (this.arr.length < this.top + list0.top) {
             this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
             // this.changeCapacity((this.top + list.top) * 2);
@@ -52,11 +65,10 @@ class ArrayList<T> {
         this.top += list0.top;
     }
 
+    // question 2
+    // Insert list0 in this list at a given index.
+    // We assume 0 <= index < top.
     public void add(ArrayList<T> list0, int index) {
-        // Question 2 in the problem set.
-        // Insert list0 in this list at a given index.
-        // We assume 0 <= index < top.
-
         if (this.arr.length < this.top + list0.top) {
             this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
             // this.changeCapacity((this.top + list.top) * 2);
@@ -69,39 +81,60 @@ class ArrayList<T> {
             this.arr[i] = list0.arr[i - index];
         }
 
-
         // for (int i = this.top - 1; i >= 0; i--) { // index / 2 - (this.top - index)
-        //     if (i >= index) {
-        //         this.arr[i + list0.top] = this.arr[i];
-        //     }
-        //     this.arr[i + list0.top - (this.top - index)] = list0.arr[list0.top + i - 5];
+        // if (i >= index) {
+        // this.arr[i + list0.top] = this.arr[i];
+        // }
+        // this.arr[i + list0.top - (this.top - index)] = list0.arr[list0.top + i - 5];
         // }
 
         // for (int i = this.top - 1; i >= 0; i--) { // index / 2 - (this.top - index)
-        //     if (i >= index) {
-        //         this.arr[i + list0.top] = this.arr[i];
-        //     }
-        //     this.arr[i + list0.top - (this.top + index - list0.top - 1)] = list0.arr[i + (list0.top - 1 - (this.top - 1))];
+        // if (i >= index) {
+        // this.arr[i + list0.top] = this.arr[i];
+        // }
+        // this.arr[i + list0.top - (this.top + index - list0.top - 1)] = list0.arr[i +
+        // (list0.top - 1 - (this.top - 1))];
         // }
 
         // for (int i = 1; i >= 0; i--) { // index / 2 - (this.top - index)
-        //     if (i >= index) {
-        //         this.arr[i + list0.top + this.top] = this.arr[i + this.top];
-        //     }
-        //     this.arr[i + list0.top * 2 - index + 1] = list0.arr[i + list0.top];
+        // if (i >= index) {
+        // this.arr[i + list0.top + this.top] = this.arr[i + this.top];
+        // }
+        // this.arr[i + list0.top * 2 - index + 1] = list0.arr[i + list0.top];
         // }
 
         this.top += list0.top;
     }
 
-    // Extra
-    public String toString() {
-        StringBuilder s = new StringBuilder();
-        s.append("[ ");
-        for (int i = 0; i < top - 1; i++) {
-            s.append(arr[i] + ", ");
+    public void remove(int index) {
+        top--;
+        for (int i = index; i < top; i++) {
+            arr[i] = arr[i + 1];
         }
-        s.append(arr[top - 1] + " ]");
-        return s.toString();
+        if (top < arr.length / 4 && MIN_CAP <= arr.length / 2) {
+            changeCapacity(arr.length / 2);
+        }
+    }
+
+    // question 3
+    // Remove all elements arr[i], with i1 <= i < i2.
+    // We assume 0 <= i1 < i2 <= top.
+    public void remove(int i1, int i2) {
+        for (int i = 0; i < top - i2; i++) {
+            arr[i1 + i] = arr[i + i2];
+        }
+
+        // for (int i = i1; i <= top - i2 + 1; i++) {
+        //     arr[i] = arr[i + i2 - i1];
+        // }
+        top -= i2 - i1;
+        while (top < arr.length / 4 && MIN_CAP <= arr.length / 2) {
+            changeCapacity(arr.length / 2);
+        }
+    }
+
+    // question 4
+    // Remove all elements with a given value.
+    void removeValue(T value) {
     }
 }
