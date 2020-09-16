@@ -1,7 +1,7 @@
 class Node<T> {
     T value;
-    Node next;
-    Node previous;
+    Node<T> next;
+    Node<T> previous;
 
     public Node(T value) {
         this.value = value;
@@ -9,36 +9,36 @@ class Node<T> {
 }
 
 class LinkedList<T> {
-    private Node start;
-    private Node end;
+    private Node<T> start;
+    private Node<T> end;
 
     public LinkedList() {
         // set start and end to null
     }
 
     public void addToEmpty(T value) {
-        Node x = new Node(value);
+        Node<T> x = new Node<T>(value);
         start = x;
         end = x;
     }
 
     public void appendValue(T value) {
-        Node x = new Node(value);
+        Node<T> x = new Node<T>(value);
         x.previous = end;
         end.next = x;
         end = x;
     }
 
     public void prependValue(T value) {
-        Node x = new Node(value);
+        Node<T> x = new Node<T>(value);
         x.next = start;
         start.previous = x;
         start = x;
     }
 
     // insert node before node y
-    public void insert(Node y, T value) {
-        Node x = new Node(value);
+    public void insert(Node<T> y, T value) {
+        Node<T> x = new Node<T>(value);
         // x.previous = y.previous;
         // x.previous.next = x;
         // y.previous = x;
@@ -56,7 +56,7 @@ class LinkedList<T> {
     }
 
     public void printLinkedList() {
-        for(Node x = start; x != null; x = x.next) {
+        for(Node<T> x = start; x != null; x = x.next) {
             System.out.println(x.value + " ");
         }
     }

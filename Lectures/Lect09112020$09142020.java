@@ -13,6 +13,7 @@ class ArrayList<T> {
     private int top;
     private static final int MIN_CAP = 12;
 
+    @SuppressWarnings("unchecked")
     public ArrayList() {
         arr = (T[]) new Object[MIN_CAP];
         top = 0;
@@ -34,6 +35,7 @@ class ArrayList<T> {
         top++;
     }
 
+    @SuppressWarnings("unchecked")
     private void changeCapacity(int capacity) {
         T[] arr2 = (T[]) new Object[capacity];
         for(int i = 0; i < top; i++) {
@@ -75,10 +77,11 @@ class ArrayList<T> {
 }
 class Lect09142020 {
     public static void main(String[] args) {
-        ArrayList<Integer> a = ArrayList<Integer>();
         // n > 0
+        int n = 10;
+        ArrayList<Integer> a = new ArrayList<Integer>();
         for(int i = 0; i < n; i++) {
-            a.add();
+            a.add(i);
         }
         /** 
          * list size | capacity(length) | copy operations | total copy operations
