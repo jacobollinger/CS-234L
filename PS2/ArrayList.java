@@ -136,6 +136,7 @@ class ArrayList<T> {
     // question 4
     // Remove all elements with a given value.
     void removeValue(T value) {
+        // not linear atm
         for(int i = 0; i < top; i++) {
             if(arr[i] == value) {
                 remove(i);
