@@ -16,5 +16,13 @@ class MakeshiftTest {
         // arrList1.add(arrList2, 3);
 
         System.out.println(arrList1);
+
+        LinkedList<Integer> linkedList1 = new LinkedList<Integer>();
+        linkedList1.addToEmptyLinkedList(1);
+        for(int i = 2; i < 10; i++) {
+            linkedList1.appendValue(i);
+        }
+        linkedList1.delete(5);
+        System.out.println(linkedList1.toString());
     }
 }
