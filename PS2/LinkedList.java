@@ -90,8 +90,14 @@ class LinkedList<T> {
     // Append list0 to this list.
     // Clear list0.
     void append(LinkedList<T> list0) {
-        end.next = list0.start;
-        list0.start.previous = end;
+        if (empty()) {
+            start = list0.start;
+            end = list0.end;
+        } else if (list0.empty()) {
+        } else {
+            end.next = list0.start;
+            list0.start.previous = end;
+        }
     }
 
     // question 2
