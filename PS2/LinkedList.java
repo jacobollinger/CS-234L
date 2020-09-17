@@ -98,6 +98,7 @@ class LinkedList<T> {
             end.next = list0.start;
             list0.start.previous = end;
         }
+        list0.clear();
     }
 
     // question 2
