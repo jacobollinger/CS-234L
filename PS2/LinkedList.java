@@ -106,6 +106,15 @@ class LinkedList<T> {
     // Insert list0 in this list before node x.
     // Clear list0.
     void insert(LinkedList<T> list0, Node x) {
+        if(x == start) {
+            list0.end.next = start;
+            start.previous = list0.end;
+            start = list0.start;
+        } else {
+            x.previous.next = list0.start;
+            list0.end.next = x;
+        }
+        list0.clear();
     }
 
     // question 3
