@@ -23,12 +23,10 @@ class LinkedList<T> {
     // Append a new value to this list.
     void append(T value) {
         Node newNode = new Node(value);
-        if (start == null) // This list is empty.
-        {
+        if (start == null) { // This list is empty.
             start = newNode;
             end = newNode;
-        } else // This list is nonempty.
-        {
+        } else { // This list is nonempty.
             newNode.previous = end;
             end.next = newNode;
             end = newNode;
@@ -39,13 +37,11 @@ class LinkedList<T> {
     // Insert a new value before node x.
     void insert(T value, Node x) {
         Node newNode = new Node(value);
-        if (x == start) // Insert at the start.
-        {
+        if (x == start) { // Insert at the start.
             newNode.next = start;
             start.previous = newNode;
             start = newNode;
-        } else // Insert in the middle.
-        {
+        } else { // Insert in the middle.
             newNode.next = x;
             newNode.previous = x.previous;
             x.previous.next = newNode;
@@ -56,20 +52,16 @@ class LinkedList<T> {
     // Let x be node in this list.
     // Delete x from this list.
     void delete(Node x) {
-        if (x == start && x == end) // x is the only node in this list.
-        {
+        if (x == start && x == end) { // x is the only node in this list.
             start = null;
             end = null;
-        } else if (x == start) // x is the first node.
-        {
+        } else if (x == start) { // x is the first node.
             start = start.next;
             start.previous = null;
-        } else if (x == end) // x is the last node.
-        {
+        } else if (x == end) { // x is the last node.
             end = end.previous;
             end.next = null;
-        } else // x is a node in the middle.
-        {
+        } else { // x is a node in the middle.
             x.previous.next = x.next;
             x.next.previous = x.previous;
         }
@@ -106,7 +98,7 @@ class LinkedList<T> {
     // Insert list0 in this list before node x.
     // Clear list0.
     void insert(LinkedList<T> list0, Node x) {
-        if(x == start) {
+        if (x == start) {
             list0.end.next = start;
             start.previous = list0.end;
             start = list0.start;
