@@ -7,7 +7,7 @@ class LinkedList<T> {
         }
     }
 
-    private Node start, end;
+    Node start, end;
 
     boolean empty() {
         return start == null;
@@ -67,7 +67,7 @@ class LinkedList<T> {
 }
 
 class Lect09162020 {
-    // each value is stored seperately in its own class node
+    // each value is stored separately in its own class node
     // each node contains the value and a reference to the next node
     // last node points to null
 }
