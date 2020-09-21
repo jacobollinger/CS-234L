@@ -122,6 +122,13 @@ class LinkedList<T> {
     // x.
     // Delete the sublist starting at x and ending at y.
     void delete(Node x, Node y) {
+        if (x == start) {
+            start = y.next;
+            start.previous = null;
+        } else {
+            x.previous.next = y.next;
+            y.next.previous = x.previous;
+        }
     }
 
     // question 4
