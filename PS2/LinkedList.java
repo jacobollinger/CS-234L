@@ -85,8 +85,7 @@ class LinkedList<T> {
         if (empty()) {
             start = list0.start;
             end = list0.end;
-        } else if (list0.empty()) {
-        } else {
+        } else if (!list0.empty()) {
             end.next = list0.start;
             list0.start.previous = end;
         }
