@@ -7,7 +7,7 @@ class LinkedList<T> {
             this.value = value;
         }
 
-        //* to help debugging
+        // * to help debugging
         public String toString() {
             return "" + value;
         }
@@ -121,7 +121,7 @@ class LinkedList<T> {
         if (x == start) {
             start = y.next;
             start.previous = null;
-        } else if(y == end) {
+        } else if (y == end) {
             end = x.previous;
             end.next = null;
         } else {
@@ -134,7 +134,7 @@ class LinkedList<T> {
     // Reverse the order of the elements in this list.
     void reverse() {
         Node temp;
-        for(Node i = start; i != null; i = i.previous) {
+        for (Node i = start; i != null; i = i.previous) {
             temp = i.next;
             i.next = i.previous;
             i.previous = temp;
