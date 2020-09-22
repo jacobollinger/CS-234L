@@ -6,6 +6,11 @@ class LinkedList<T> {
         Node(T value) {
             this.value = value;
         }
+
+        //* to help debugging
+        public String toString() {
+            return "" + value;
+        }
     }
 
     Node start, end; // start and end are initialized to null.
