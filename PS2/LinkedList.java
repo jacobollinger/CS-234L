@@ -116,6 +116,9 @@ class LinkedList<T> {
         if (x == start) {
             start = y.next;
             start.previous = null;
+        } else if(y == end) {
+            end = x.previous;
+            end.next = null;
         } else {
             x.previous.next = y.next;
             y.next.previous = x.previous;
