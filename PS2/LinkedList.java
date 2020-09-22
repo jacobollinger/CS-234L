@@ -133,5 +133,14 @@ class LinkedList<T> {
     // question 4
     // Reverse the order of the elements in this list.
     void reverse() {
+        Node temp;
+        for(Node i = start; i != null; i = i.previous) {
+            temp = i.next;
+            i.next = i.previous;
+            i.previous = temp;
+        }
+        temp = end;
+        end = start;
+        start = temp;
     }
 }
