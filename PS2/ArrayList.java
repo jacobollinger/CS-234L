@@ -96,17 +96,16 @@ class ArrayList<T> {
     // Remove all elements arr[i], with i1 <= i < i2.
     // We assume 0 <= i1 < i2 <= top.
     public void remove(int i1, int i2) {
+        int temp = 0;
         for (int i = 0; i < top - i2; i++) {
             arr[i1 + i] = arr[i + i2];
         }
-        //// for (int i = i1; i <= top - i2 + 1; i++) {
-        ////     arr[i] = arr[i + i2 - i1];
-        //// }
         top -= i2 - i1;
-        //? Is this linear
-        while (top < arr.length / 4 && MIN_CAP <= arr.length / 2) {
-            //! The function changeCapacity must be called at most once in each add and remove function.
-            changeCapacity(arr.length / 2);
+        while (top < (arr.length / (temp + 1)) / 4 && MIN_CAP <= (arr.length / (temp + 1)) / 2) {
+            temp++;
+        }
+        if (temp != 0) {
+            changeCapacity(arr.length / (temp * 2));
         }
     }
 
