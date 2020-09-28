@@ -113,11 +113,14 @@ class ArrayList<T> {
     // question 4
     // Remove all elements with a given value.
     void removeValue(T value) {
-        //? Is this linear
+        //! Not linear
+        // TODO make linear
+        int j = 0;
         for(int i = 0; i < top; i++) {
-            if(arr[i] == value) {
-                remove(i);
-                i--;
+            if(arr[i] != value) {
+                arr[j] = arr[i];
+            } else {
+                j++;
             }
         }
     }
