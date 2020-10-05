@@ -57,7 +57,6 @@ class ArrayList<T> {
     public void add(ArrayList<T> list0) {
         if (this.arr.length < this.top + list0.top) {
             this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
-            //// this.changeCapacity((this.top + list.top) * 2);
         }
         for (int i = this.top; i < this.top + list0.top; i++) {
             this.arr[i] = list0.arr[i - top];
@@ -71,7 +70,6 @@ class ArrayList<T> {
     public void add(ArrayList<T> list0, int index) {
         if (this.arr.length < this.top + list0.top) {
             this.changeCapacity(Math.max(this.arr.length * 2, this.top + list0.top));
-            //// this.changeCapacity((this.top + list.top) * 2);
         }
         for (int i = this.top - 1; i >= index; i--) {
             this.arr[i + list0.top] = this.arr[i];
@@ -96,32 +94,30 @@ class ArrayList<T> {
     // Remove all elements arr[i], with i1 <= i < i2.
     // We assume 0 <= i1 < i2 <= top.
     public void remove(int i1, int i2) {
+        int temp = 0;
         for (int i = 0; i < top - i2; i++) {
             arr[i1 + i] = arr[i + i2];
         }
-        //// for (int i = i1; i <= top - i2 + 1; i++) {
-        ////     arr[i] = arr[i + i2 - i1];
-        //// }
         top -= i2 - i1;
-        //? Is this linear
-        while (top < arr.length / 4 && MIN_CAP <= arr.length / 2) {
-            //! The function changeCapacity must be called at most once in each add and remove function.
-            changeCapacity(arr.length / 2);
+        while (top < (arr.length / (temp + 1)) / 4 && MIN_CAP <= (arr.length / (temp + 1)) / 2) {
+            temp++;
+        }
+        if (temp != 0) {
+            changeCapacity(arr.length / (temp * 2));
         }
     }
 
     // question 4
     // Remove all elements with a given value.
     void removeValue(T value) {
-        //! Not linear
-        // TODO make linear
-        int j = 0;
-        for(int i = 0; i < top; i++) {
-            if(arr[i] != value) {
-                arr[j] = arr[i];
+        int offset = 0;
+        for (int i = 0; i < top; i++) {
+            if (arr[i] != value) {
+                arr[i - offset] = arr[i];
             } else {
-                j++;
+                offset++;
             }
         }
+        top -= offset;
     }
 }
