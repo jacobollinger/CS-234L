@@ -1,3 +1,5 @@
+import LinkedList.Node;
+
 class Lect10052020 {
     //* Recursion
     // sum all values in array a[0...j]
@@ -59,10 +61,40 @@ class Lect10052020 {
     static boolean sorted(int[] a, int j) {
         if (j == 0) {
             return true;
-        } else if (j == 1) {
-            return a[0] < a[1];
         } else {
-            return a[j - 1] < a[j] && sorted(a, j - 1);
+            return a[j] >= a[j - 1] && sorted(a, j - 1);
+        }
+    }
+    // count number of occurences of key value in a[0...j]
+    static int count(int[] a, int j, int key) {
+        if (j == 0) {
+            return a[0] == key ? 1 : 0;
+        } else {
+            return count(a, j - 1, key) + a[j] == key ? 1 : 0;
+        }
+    }
+    // count number of occurences of key in LinkedList starting from Node x to the end
+    static int countLinkedList(Node x, int key) {
+        if (x == null) {
+            return 0;
+        } else if (x == end) {
+            return x.value == key ? 1 : 0;
+        } else {
+            return countLinkedList(x.next, key) + x.value == key ? 1 : 0;
+        }
+    }
+    
+    //* binary tree
+    // LinkedList but each node can have at most 2 next nodes (0, 1, 2)
+    // first node is called root
+    // root connects to a left and right
+    // last nodes of each branch are called leaf nodes
+    // right is a subtree of root
+    int countTree(Node x, int key) {
+        if (x == null) {
+            return 0;
+        } else {
+            return countTree(x.left, key) + countTree(x.right, key) + x.value == key ? 1 : 0;
         }
     }
 }
