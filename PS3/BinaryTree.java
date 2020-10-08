@@ -16,7 +16,11 @@ class BinaryTree {
 
     // question 1. Return the number of nodes in the subtree rooted at node x.
     int size(Node x) {
-        return 0;
+        if (x == null) {
+            return 0;
+        } else {
+            return size(x.left) + size(x.right) + 1;
+        }
     }
 
     // question 2. Return the rightmost node in the subtree rooted at node x.
