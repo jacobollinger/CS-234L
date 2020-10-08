@@ -25,7 +25,13 @@ class BinaryTree {
 
     // question 2. Return the rightmost node in the subtree rooted at node x.
     Node rightmost(Node x) {
-        return null;
+        if (x == null) {
+            return null;
+        } else if (x.right == null) {
+            return x;
+        } else {
+            return rightmost(x.right);
+        }
     }
 
     // question 3. Return the height of the subtree rooted at node x.
