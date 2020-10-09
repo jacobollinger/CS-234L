@@ -60,6 +60,12 @@ class BinaryTree {
     // A binary tree T is balanced if and only if, for all nodes x in T,
     // abs(height(x.left) - height(x.right)) <= 1.
     boolean balanced(Node x) {
-        return false;
+        if ((x == null) || (x.left == null && x.right == null)
+                || ((x.left == null && height(x.right) <= 0) 
+                || (x.right == null && height(x.left) <= 0))) {
+            return true;
+        } else {
+            return Math.abs(height(x.left) - height(x.right)) <= 1 && balanced(x.left) && balanced(x.right);
+        }
     }
 }
