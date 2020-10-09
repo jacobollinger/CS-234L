@@ -97,4 +97,17 @@ class Lect10052020 {
             return countTree(x.left, key) + countTree(x.right, key) + x.value == key ? 1 : 0;
         }
     }
+
+    // Count number of leaves in a subtree rooted at x
+    // leaf: node that has 0 children
+    // x = a --> 5, x = i --> 1, x = null --> 0
+    int leafCount(Node x) {
+        if (x == null) {
+            return 0;
+        } else if (x.left == null && x.right == null) {
+            return 1;
+        } else {
+            return leafCount(x.left) + leafCount(x.right);
+        }
+    }
 }
