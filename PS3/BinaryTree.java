@@ -47,7 +47,14 @@ class BinaryTree {
 
     // question 4. Return the deepest node in the subtree rooted at node x.
     Node deepest(Node x) {
-        return null;
+        if (x == null) {
+            return null;
+        } else if (x.left == null && x.right == null) {
+            return x;
+        } else {
+            // TODO
+            // return x.left == null ? deepest(x.right) : deepest(x.left);
+        }
     }
 
     // question 5. Determine if the subtree rooted at node x is balanced.
