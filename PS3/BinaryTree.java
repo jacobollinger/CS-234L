@@ -52,8 +52,7 @@ class BinaryTree {
         } else if (x.left == null && x.right == null) {
             return x;
         } else {
-            // TODO
-            // return x.left == null ? deepest(x.right) : deepest(x.left);
+            return height(x.left) > height(x.right) ? deepest(x.left) : deepest(x.right);
         }
     }
 
