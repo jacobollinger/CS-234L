@@ -1,5 +1,3 @@
-import javax.sound.sampled.LineListener;
-
 class Lect09232020 {
     //* List operations: ArrayList vs LinkedList
     /**
