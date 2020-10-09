@@ -36,7 +36,13 @@ class BinaryTree {
 
     // question 3. Return the height of the subtree rooted at node x.
     int height(Node x) {
-        return 0;
+        if (x == null) {
+            return -1;
+        } else if (x.left == null && x.right == null) {
+            return 0;
+        } else {
+            return Math.max(height(x.left), height(x.right)) + 1;
+        }
     }
 
     // question 4. Return the deepest node in the subtree rooted at node x.
