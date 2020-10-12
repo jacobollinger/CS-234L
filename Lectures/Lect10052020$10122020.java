@@ -1,5 +1,3 @@
-import LinkedList.Node;
-
 class Lect10052020 {
     //* Recursion
     // sum all values in array a[0...j]
@@ -97,7 +95,6 @@ class Lect10052020 {
             return countTree(x.left, key) + countTree(x.right, key) + x.value == key ? 1 : 0;
         }
     }
-
     // Count number of leaves in a subtree rooted at x
     // leaf: node that has 0 children
     // x = a --> 5, x = i --> 1, x = null --> 0
@@ -108,6 +105,45 @@ class Lect10052020 {
             return 1;
         } else {
             return leafCount(x.left) + leafCount(x.right);
+        }
+    }
+
+    /** Binary search tree
+     * 
+     * Let x be a node in a binary search tree
+     * If y is a node in the left subtree of x, thenthe value at y is less than the value at x.
+     * If y is a node in the right subtree of x, then the value at y is larger than the value at x.
+     * 
+     */
+    Node search(T value) {
+        Node x = root;
+        Node y = null;
+        while(x != null) {
+            y = x;
+            if (value.equals(x.value)) {
+                return x;
+            } else if (value.compareTo(x.value) < 0) {
+                x = x.left;
+            } else {
+                x = x.right;
+            }
+        }
+        return y;
+    }
+    boolean bSearch(T value) {
+        Node y = search(value);
+        return y != null && y.value.equals(value);
+    }
+    void insert(T value) {
+        if (root == null) {
+            root = new Node(value);
+        } else {
+            Node y = search(value);
+            if (y.value.equals(value)) {
+                return;
+            } else {
+
+            }
         }
     }
 }
