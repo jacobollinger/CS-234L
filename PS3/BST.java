@@ -109,7 +109,9 @@ class BST<T extends Comparable<T>> {
     // Return null if such node does not exist.
     // The function must run in O(h), where h is the height of this tree.
     Node predecessor(T value) {
-        return null;
+        Node x = search(value);
+        if (x.value.compareTo(value) < 0) return x;
+        else return predecessor(x);
     }
 
     // question 2.
