@@ -169,4 +169,34 @@ class Lect10052020 {
     }
     // Traverse tree in order
     for (Node x = minimum(root; x != null; x = successor(x))) {...}
+
+    /** Detach node x
+     * case 1: x does not have children
+     * case 2:  x has 1 child
+     * case 3: x has 2 children
+     * case 4: x is root node
+     */
+    void delete(Node x) {
+        if (x.left == null && x.right == null) x.parent = null;
+
+        if (x.left != null && x.right != null) {
+
+        }
+    }
+    public static BST<Integer> perfectlyBalanced(int[] a) {
+        BST<Integer> t = new BST<Integer>();
+        Arrays.sort(a);
+        perfectlyBalanced(a, 0, a.length - 1, t);
+        return t;
+    }
+    private static void perfectlyBalanced(int[]a, int i, int j, BST<Integer> t) {
+        if (i > j) return;
+        else {
+            int m = (i + j) / 2;
+            t.insert(a[m]);
+            perfectlyBalanced(a, i, m - 1, t);
+            perfectlyBalanced(a, m + 1, j, t);
+        }
+
+    }
 }
