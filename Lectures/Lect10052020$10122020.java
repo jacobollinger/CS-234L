@@ -1,3 +1,5 @@
+import LinkedList.Node;
+
 class Lect10052020 {
     //* Recursion
     // sum all values in array a[0...j]
@@ -108,7 +110,7 @@ class Lect10052020 {
         }
     }
 
-    /** Binary search tree
+    /** Binary search tree (BST)
      * 
      * Let x be a node in a binary search tree
      * If y is a node in the left subtree of x, thenthe value at y is less than the value at x.
@@ -139,11 +141,32 @@ class Lect10052020 {
             root = new Node(value);
         } else {
             Node y = search(value);
-            if (y.value.equals(value)) {
-                return;
-            } else {
-
-            }
+            if (y.value.equals(value)) return;
+            else Node x = new Node(value);
+            if (value.compareTo(y.value) < 0) y.left = x;
+            else y.right = x;
+            x.parent = y;
         }
     }
+    Node maximum(Node x) {
+        while(x.right != null) x = x.right;
+        return x;
+    }
+    Node minimum(Node x) {
+        while(x.left != null) x = x.left;
+        return x;
+    }
+    Node successor(Node x) {
+        if (x.right != null) return minimum(x.right);
+        else {
+            Node y = x.parent;
+            while(y != null && x == y.right) {
+                x = y;
+                y = y.parent;
+            }
+            return y;
+        }
+    }
+    // Traverse tree in order
+    for (Node x = minimum(root; x != null; x = successor(x))) {...}
 }
