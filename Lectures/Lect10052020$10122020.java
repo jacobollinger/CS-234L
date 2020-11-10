@@ -111,7 +111,7 @@ class Lect10052020 {
     /** Binary search tree
      * 
      * Let x be a node in a binary search tree
-     * If y is a node in the left subtree of x, thenthe value at y is less than the value at x.
+     * If y is a node in the left subtree of x, then the value at y is less than the value at x.
      * If y is a node in the right subtree of x, then the value at y is larger than the value at x.
      * 
      */
