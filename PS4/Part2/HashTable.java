@@ -32,20 +32,58 @@ class HashTable<T> {
     }
 
     public void add(T element) {
-        int key = Math.abs(element.hashCode());
-        int hashValue = hashFunction(key);
-    public void remove(T element) {
+        simpleAdd(element, table);
+        n++;
+        if (loadFactor() > MAX_LOAD_FACTOR && j < m.length) {
+            j++;
+            LinkedList<T>[] newTable = new LinkedList[m[j]];
+            for (int i = 0; i < m[j]; i++) {
+                newTable[i] = new LinkedList<T>();
+            }
+
+            for (int i = 0; i < m[j - 1]; i++) {
+                LinkedList<T> list = table[i];
+                for (T x : list) {
+                    simpleAdd(x, newTable);
+                }
+            }
+            table = newTable;
         }
     }
 
-    public void remove(T element)
-    {
+    private void simpleAdd(T element, LinkedList<T>[] t) {
         int key = Math.abs(element.hashCode());
         int hashValue = hashFunction(key);
-        if(table[hashValue].contains(element))
-        {
-            table[hashValue].remove(element);
-            n--;
+        if (!t[hashValue].contains(element)) {
+            t[hashValue].add(element);
+        }
+    }
+
+    public void remove(T element) {
+        simpleRemove(element, table);
+        n--;
+        if (loadFactor() < MIN_LOAD_FACTOR && j > 0) {
+            j--;
+            LinkedList<T>[] newTable = new LinkedList[m[j]];
+            for (int i = 0; i < m[j]; i++) {
+                newTable[i] = new LinkedList<T>();
+            }
+
+            for (int i = 0; i < m[j + 1]; i++) {
+                LinkedList<T> list = table[i];
+                for (T x : list) {
+                    simpleAdd(x, newTable);
+                }
+            }
+            table = newTable;
+        }
+    }
+
+    private void simpleRemove(T element, LinkedList<T>[] t) {
+        int key = Math.abs(element.hashCode());
+        int hashValue = hashFunction(key);
+        if (t[hashValue].contains(element)) {
+            t[hashValue].remove(element);
         }
     }
 
