@@ -1,0 +1,29 @@
+Write your solution in the class HashTable.
+Files: HashTable.java Test.java output.txt
+
+The objective of this assignment is to improve the performance of the hash table by making it resizable.
+When a threshold is reached, the size of the hash table is increased to reduce the load factor, hence improving the average running time of all operations.
+
+Some definitions
+n: the number of elements in the hash table.
+m[j]: the current size of the hash table.
+n / m[j]: the load factor (i.e. the average number of elements in each slot).
+MAX_LOAD_FACTOR: the maximum load factor.
+MIN_LOAD_FACTOR: the minimum load factor.
+
+The assignment
+Modify the add and remove functions in the class HashTable.
+When adding an element, if the load factor exceeds MAX_LOAD_FACTOR, then the size of the table is "doubled".
+When removing an element, if the load factor is below MIN_LOAD_FACTOR, then the size of the table is "halved".
+Setting the size of the hash table to a prime number allows elements to be more evenly distributed, so we define m as an array of prime numbers as follows.
+m = {3, 7, 17, 37, 79, 163, 331}
+The first prime m[0]=3 is the initial size of the table. We intentionally choose a small initial value for easy testing.
+The next value is obtained by choosing the smallest prime larger than 2*m[0], i.e. 7 is the smallest prime larger than 2*3=6.
+We repeat this method until enough primes are in the array m.
+We add the variable j (initially set to 0) to index the array m, i.e. m[j] is the current size of the hash table.
+
+Each time the table is resized, the index j must be modified (increased or decreased by 1), and a new table of size m[j] must be created.
+All elements must be rehashed into the new table.
+
+The class Test provides code to test the hash table by adding pseudorandom values.
+The file output.txt contains the desired output.

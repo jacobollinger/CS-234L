@@ -98,7 +98,9 @@ class BST<T extends Comparable<T>> {
     // Return null if such node does not exist.
     // The function must run in O(h), where h is the height of this tree.
     Node successor(T value) {
-        return null;
+        Node x = search(value);
+        if (x.value.compareTo(value) > 0) return x;
+        else return successor(x);
     }
 
     // question 1b.
@@ -107,7 +109,9 @@ class BST<T extends Comparable<T>> {
     // Return null if such node does not exist.
     // The function must run in O(h), where h is the height of this tree.
     Node predecessor(T value) {
-        return null;
+        Node x = search(value);
+        if (x.value.compareTo(value) < 0) return x;
+        else return predecessor(x);
     }
 
     // question 2.
@@ -116,7 +120,13 @@ class BST<T extends Comparable<T>> {
     // The function must run in O(h + m), where h is the height of this tree, and m
     // is the number of nodes in the interval (v1, v2).
     int intervalSize(T v1, T v2) {
-        return 0;
+        int c = 0;
+        Node x = successor(v1);
+        while (x != null && x.value.compareTo(v2) < 0) {
+            c++;
+            x = successor(x);
+        }
+        return c;
     }
 
     // question 3.
@@ -126,6 +136,9 @@ class BST<T extends Comparable<T>> {
     // The function must run in O(n1 + n2), where n1 and n2 are the number of nodes
     // in this tree and t respectively.
     boolean intersect(BST<T> t) {
+        for (Node x = minimum(t.root); x != null; x = successor(x)) {
+            if (x.value.compareTo(search(x.value).value) == 0) return true;
+        }
         return false;
     }
 
@@ -136,6 +149,11 @@ class BST<T extends Comparable<T>> {
     // The function must run in O(n1 + n2), where n1 and n2 are the number of nodes
     // in this tree and t respectively.
     boolean subtree(BST<T> t) {
-        return false;
+        Node x = minimum(this.root);
+        while(x != null) {
+            if (x.value.compareTo(t.search(x.value).value) != 0) return false;
+            x = successor(x);
+        }
+        return true;
     }
 }
