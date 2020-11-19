@@ -38,10 +38,47 @@ class Review {
          * ! Know this sum and n * (n + 1) / 2 (sum of the first n integers)
          */
 
-        // iterate
-        // queue
-        for (int i = head; i != top; i = (i + 1) % arr.length) {}
-        
+
+        { //* Iterating Over Data Structures
+            // Stacks
+            ArrayStack stack = new ArrayStack();
+            for(int i = 0; i < stack.top; i++) {
+                System.out.println(stack.arr[i]);
+            }
+
+            // Queues
+            ArrayQueue queue = new ArrayQueue();
+            for (int i = queue.head; i != queue.top; i = (i + 1) % queue.arr.length) {
+                System.out.println(queue.arr[i]);
+            }
+
+            // ArrayLists
+            ArrayList aList = new ArrayList();
+            for (int i = 0; i < aList.top; i++) {
+                System.out.println(aList.arr[i]);
+            }
+
+            // LinkedLists
+            LinkedList lList = new LinkedList();
+            for (Node x = lList.start; x != null; x = x.next) {
+                System.out.println(x.value);
+            }
+
+            // BinarySearchTrees
+            BST bst = new BST();
+            for (Node x = minimum(bst.root); x != null; x = successor(x)) {
+                System.out.println(x.value);
+            }
+
+            // HashTables
+            HashTable ht = new HashTable();
+            for (int i = 0; i < ht.table.length; i++) {
+                for (T e : ht.table) {
+                    System.out.println(e);
+                }
+            }
+        }
+
         /** Final Topics: 
          * running time analysis, Stacks , Queues, ArrayLists, 
          * LinkedLists, trees, bst, AVL tree (self-balancing BST)
