@@ -1,4 +1,4 @@
-class Lecture10282020 {
+class Lect10282020 {
     //* balancing BST
     // BST operations run in O(h) for h := height of tree
     // minimize h
