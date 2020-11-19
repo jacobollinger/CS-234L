@@ -7,13 +7,23 @@ class Lect08312020$09042020 {
             }
         }
         /**
-         * instructions | const | value | repetitions int i = 0 | c1 | i=0 | 1 i <
-         * a.length | c2 | true | n int j = 0 | c3 | j=0 | n j <= i | c4 | true |
-         * println | c5 | ----- | j++ | c6 | i=n-1 j=1,2,...n | (n^2)/2 + n/2 j <= i |
-         * c4 | false | n i++ | c7 | i=1,2,...n | n i < a.length | c2 | false | 1
+         * instructions | const | value            | repetitions 
+         * int i = 0    | c1    | i=0              | 1 
+         * i < a.length | c2    | true             | n 
+         * int j = 0    | c3    | j=0              | n 
+         * j <= i       | c4    | true             | 
+         * println      | c5    | ---------------- | 
+         * j++          | c6    | i=n-1 j=1,2,...n | (n^2)/2 + n/2 
+         * j <= i       | c4    | false            | n 
+         * i++          | c7    | i=1,2,...n       | n 
+         * i < a.length | c2    | false            | 1
          * 
-         * T(n) = (c4/2 + c5/2 + c6/2)n^2 + (c2 + c3 + 3c4/2 + c5/2 + c6/2 + c7)n + (c1
-         * + c2) T(n) = an^2 + bn + c a, b, c constants
+         * T(n) = (c4/2 + c5/2 + c6/2)n^2 
+         *          + (c2 + c3 + 3c4/2 + c5/2 + c6/2 + c7)n 
+         *          + (c1 + c2) T(n) 
+         *      = an^2 + bn + c
+         * 
+         * a, b, and c are constants
          * 
          * order of growth of a function
          */
@@ -29,14 +39,14 @@ class Lect08312020$09042020 {
         return minIndex;
     }
     /**
-     * instructions | const | value | repetitions
-     * int minIndex = low | d1 |    | 1
-     * int i = low + 1 | d2 | i = low + 1 | 1
-     * i <= high    | d3    |       |
-     * if (a[i] < a[minIndex]) minIndex = i; | d4 | h - l
-     * i++          | d5    | i = l+2,l+3,...,h+l
-     * i <= high    | d3    | false | 1
-     * return minIndex |    |       | 1
+     * instructions         | const | value                 | repetitions
+     * int minIndex = low   | d1    | minIndex = low        | 1
+     * int i = low + 1      | d2    | i = low + 1           | 1
+     * i <= high            | d3    | true                  | h - l
+     * if (...) ...         | d4    |                       | h - l
+     * i++                  | d5    | i = l+2,l+3,...,h+1   | h - l
+     * i <= high            | d3    | false                 | 1
+     * return minIndex      | d6    |                       | 1
      * 
      * T_m(l, h) = (h - l)(d3 + d4 + d5) + (d1 + d2 + d3 + d6)
      */
